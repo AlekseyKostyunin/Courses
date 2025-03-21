@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/onboarding">
+
+    <fragment
+        android:id="@+id/onboarding"
+        android:name="com.alekseykostyunin.courses.presentation.onboarding.OnboardingFragment"
+        tools:layout="@layout/fragment_onboarding">
+        <action
+            android:id="@+id/action_onboarding_to_entrance"
+            app:destination="@id/entrance"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/entrance"
+        android:name="com.alekseykostyunin.courses.presentation.entrance.EntranceFragment"
+        tools:layout="@layout/fragment_entrance">
+        <action
+            android:id="@+id/action_entrance_to_list_courses"
+            app:destination="@id/list_courses" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/list_courses"
+        android:name="com.alekseykostyunin.courses.presentation.listcourses.ListCoursesFragment"
+        tools:layout="@layout/fragment_list_courses">
+        <action
+            android:id="@+id/action_to_list_courses"
+            app:destination="@id/list_courses" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/bookmark"
+        android:name="com.alekseykostyunin.courses.presentation.bookmark.BookmarkFragment"
+        tools:layout="@layout/fragment_bookmark">
+        <action
+            android:id="@+id/action_to_bookmark"
+            app:destination="@id/bookmark" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/account"
+        android:name="com.alekseykostyunin.courses.presentation.account.AccountFragment"
+        tools:layout="@layout/fragment_account">
+        <action
+            android:id="@+id/action_to_account"
+            app:destination="@id/account" />
+
+    </fragment>
+
+
+</navigation>

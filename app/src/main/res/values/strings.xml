@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Courses</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="thousands_of_courses">Тысячи курсов \n в одном месте</string>
+    <string name="go">Продолжить</string>
+    <string name="list_courses">Список курсов</string>
+    <string name="entrance">Вход</string>
+    <string name="email">Email</string>
+    <string name="enter_the_password">Введите пароль</string>
+    <string name="house">Главная</string>
+    <string name="bookmark">Избранное</string>
+    <string name="account">Аккаунт</string>
+    <string name="account_user">Аккаунт</string>
+    <string name="details"><![CDATA[Подробнее ->]]></string>
+    <string name="favorite">Избранное</string>
+    <string name="email2">Email</string>
+    <string name="password">Пароль</string>
+    <string name="no_account">Нету аккаунта?</string>
+    <string name="forgot_pass">Забыл пароль</string>
+    <string name="reg">Регистрация</string>
+    <string name="example_gmail_com">example@gmail.com</string>
+    <string name="search_courses">Search courses...</string>
+    <string name="sort_date">По дате добавления</string>
+</resources>

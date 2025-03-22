@@ -72,6 +72,12 @@ class ListCoursesAdapter(
         val outputDateString = date?.let { outputFormat.format(it) }
         holder.apply {
             image.setImageResource(resID)
+            image.post {
+                val matrix = image.imageMatrix
+                val scale: Float = image.width.toFloat() / image.drawable.intrinsicWidth
+                matrix.setScale(scale, scale, 0f, 0f)
+                image.imageMatrix = matrix
+            }
             rating.text = course.rate
             startDate.text = outputDateString
             title.text = course.title
@@ -85,14 +91,6 @@ class ListCoursesAdapter(
                 holder.iconBookmark.setColorFilter(ContextCompat.getColor(context, R.color.white))
                 holder.iconBookmark.setImageDrawable(context.getDrawable(R.drawable.bookmark))
             }
-
-//            if(course in bookmarkCourses) {
-//                holder.iconBookmark.setColorFilter(ContextCompat.getColor(context, R.color.green))
-//                holder.iconBookmark.setImageDrawable(context.getDrawable(R.drawable.bookmark_filled))
-//            } else {
-//                holder.iconBookmark.setColorFilter(ContextCompat.getColor(context, R.color.white))
-//                holder.iconBookmark.setImageDrawable(context.getDrawable(R.drawable.bookmark))
-//            }
 
             iconBookmark.setOnClickListener {
                 if(onBookmarkClickListener != null) {

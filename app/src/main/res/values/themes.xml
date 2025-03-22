@@ -11,7 +11,7 @@
 
         <!-- Базовый стиль для BottomNavigationView -->
         <style name="BottomNavigationTheme" parent="Widget.MaterialComponents.BottomNavigationView">
-            <item name="android:background">@color/black</item> <!-- Черный фон -->
+            <item name="android:background">@color/dark_grey</item> <!-- Черный фон -->
             <item name="itemIconTint">@drawable/bottom_nav_icon_color</item> <!-- Цвет иконок -->
             <item name="itemTextColor">@drawable/bottom_nav_text_color</item> <!-- Цвет текста -->
         </style>

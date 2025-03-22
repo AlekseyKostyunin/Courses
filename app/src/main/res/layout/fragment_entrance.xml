@@ -46,6 +46,7 @@
             android:background="@drawable/rounded_edittext"
             android:backgroundTint="@color/gray"
             android:padding="15dp"
+            app:errorEnabled="true"
             android:layout_marginTop="20dp"/>
 
         <TextView
@@ -71,6 +72,7 @@
             android:background="@drawable/rounded_edittext"
             android:backgroundTint="@color/gray"
             android:padding="15dp"
+            app:errorEnabled="true"
             android:layout_marginTop="16dp"/>
 
         <Button
@@ -78,7 +80,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/entrance"
-            android:backgroundTint="@color/green"
+            android:backgroundTint="@null"
+            android:textColor="@color/white"
             app:layout_constraintTop_toBottomOf="@id/passwordEditText"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

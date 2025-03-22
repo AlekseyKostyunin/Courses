@@ -5,7 +5,6 @@ import com.alekseykostyunin.courses.data.mapper.CourseMapper
 import com.alekseykostyunin.courses.domain.model.Course
 import com.alekseykostyunin.courses.domain.repository.BookmarkRepository
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 
 object BookmarkRepositoryImpl : BookmarkRepository {
@@ -15,7 +14,7 @@ object BookmarkRepositoryImpl : BookmarkRepository {
         val mapper = CourseMapper()
         return  dao.getAllBookmarkCourses()
             .map { listCourseDTO ->
-                listCourseDTO.map { it ->
+                listCourseDTO.map {
                     mapper.fromDtoToDomain(it)
                 }
             }

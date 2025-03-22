@@ -1,0 +1,15 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Состояние, когда кнопка неактивна -->
+    <item android:state_enabled="false">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/gray" /> <!-- Серый цвет -->
+        </shape>
+    </item>
+
+    <!-- Состояние по умолчанию (кнопка активна) -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/green" /> <!-- Зеленый цвет -->
+        </shape>
+    </item>
+</selector>

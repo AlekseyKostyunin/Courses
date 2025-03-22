@@ -44,6 +44,7 @@ class MainActivity : AppCompatActivity() {
             navController.navigate(R.id.onboarding)
             sharedPreferences.edit { putBoolean("is_first_launch", false) }
         } else {
+            //navController.navigate(R.id.onboarding)
             navController.navigate(R.id.list_courses)
         }
 

@@ -41,7 +41,6 @@ class BookmarkFragment : Fragment() {
         lifecycleScope.launch {
             viewModelBookmark.courses.collect { courses ->
                 adapter.courses = courses
-                adapter.bookmarkCourses = courses
             }
         }
 
@@ -52,7 +51,6 @@ class BookmarkFragment : Fragment() {
                 } else {
                     viewModelBookmark.addCourseOfBookmark(course)
                 }
-
             }
         }
     }

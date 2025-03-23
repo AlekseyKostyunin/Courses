@@ -29,14 +29,6 @@ class ListCoursesAdapter(
             diffResult.dispatchUpdatesTo(this)
         }
 
-    var bookmarkCourses = listOf<Course>()
-        set(value) {
-            val diffCallback = CourseDiffCallback(field, value)
-            val diffResult = DiffUtil.calculateDiff(diffCallback)
-            field = value
-            diffResult.dispatchUpdatesTo(this)
-        }
-
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private var binding: CourseItemBinding = CourseItemBinding.bind(itemView)
         var image = binding.imageCourse
@@ -84,12 +76,12 @@ class ListCoursesAdapter(
             description.text = course.text
             price.text = course.price + " \u20BD"
 
-            if(course.id in bookmarkCourses.map { it.id }) {
-                holder.iconBookmark.setColorFilter(ContextCompat.getColor(context, R.color.green))
-                holder.iconBookmark.setImageDrawable(context.getDrawable(R.drawable.bookmark_filled))
+            if(course.hasLike) {
+                iconBookmark.setColorFilter(ContextCompat.getColor(context, R.color.green))
+                iconBookmark.setImageDrawable(context.getDrawable(R.drawable.bookmark_filled))
             } else {
-                holder.iconBookmark.setColorFilter(ContextCompat.getColor(context, R.color.white))
-                holder.iconBookmark.setImageDrawable(context.getDrawable(R.drawable.bookmark))
+                iconBookmark.setColorFilter(ContextCompat.getColor(context, R.color.white))
+                iconBookmark.setImageDrawable(context.getDrawable(R.drawable.bookmark))
             }
 
             iconBookmark.setOnClickListener {

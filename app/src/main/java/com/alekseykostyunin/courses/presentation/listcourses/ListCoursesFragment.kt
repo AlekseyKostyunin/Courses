@@ -14,6 +14,8 @@ import com.alekseykostyunin.courses.domain.model.Course
 import com.alekseykostyunin.courses.domain.repository.BookmarkRepository
 import com.alekseykostyunin.courses.domain.repository.CoursesRepository
 import com.alekseykostyunin.courses.presentation.bookmark.BookmarkViewModel
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
@@ -46,17 +48,31 @@ class ListCoursesFragment : Fragment() {
                 false
             )
 
+//        lifecycleScope.launch {
+//            viewModelBookmark.courses.collect { bookmarkList ->
+//                adapter.bookmarkCourses = bookmarkList
+//                adapter.notifyDataSetChanged()
+//            }
+//        }
+//
+//        viewModelCourses.courses.onEach {
+//            adapter.courses = it
+//
+//        }.launchIn(viewLifecycleOwner.lifecycleScope)
+
         lifecycleScope.launch {
-            viewModelBookmark.courses.collect { bookmarkList ->
-                adapter.bookmarkCourses = bookmarkList
+            // Комбинируем два Flow: courses и bookmarkCourses
+            combine(viewModelCourses.courses, viewModelBookmark.courses) { courses, bookmarkCourses ->
+                // Создаем новый список курсов, где каждый курс содержит информацию о том, добавлен ли он в избранное
+                courses.map { course ->
+                    course.copy(hasLike = bookmarkCourses.any { it.id == course.id })
+                }
+            }.collect { combinedCourses ->
+                // Передаем комбинированный список в адаптер
+                adapter.courses = combinedCourses
                 adapter.notifyDataSetChanged()
             }
         }
-
-        viewModelCourses.courses.onEach {
-            adapter.courses = it
-
-        }.launchIn(viewLifecycleOwner.lifecycleScope)
 
         binding.buttonSort.setOnClickListener {
             viewModelCourses.filterCourses()
